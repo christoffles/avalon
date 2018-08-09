@@ -5,7 +5,7 @@ const initialHomeState = {
 };
 
 export function homeReducer(state = initialHomeState, action) {
-    console.log('reducer triggered');
+     console.log('state', state);
     switch (action.type) {
         case HomeActions.CLICK_BUTTON:
             return {
