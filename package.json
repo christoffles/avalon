@@ -19,10 +19,26 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.56",
+    "@material-ui/core": "^1.4.3",
+    "babel-core": "^6.26.3",
+    "babel-jest": "^23.4.2",
+    "babel-runtime": "^6.26.0",
     "expo": "^27.0.1",
     "firebase": "^5.3.0",
+    "material-ui": "^0.20.2",
     "react": "^16.3.1",
+    "react-dom": "^16.4.2",
     "react-native": "~0.55.2",
-    "react-redux": "^5.0.7"
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-form": "^7.4.2",
+    "redux-form-material-ui": "^4.3.4",
+    "rxjs": "^5.5.6"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   }
 }
