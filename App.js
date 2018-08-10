@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { store } from './src/store'
 import { HomeContainer } from "./src/containers/home";
-import { SignupContainer } from "./src/containers/signup";
+import { EnterRoomContainer } from "./src/containers/enter-room";
 
 global.navigator = { userAgent: 'all' };
 
@@ -16,7 +16,7 @@ export default class App extends Component {
       <Provider store={store}>
         <MuiThemeProvider>
           <View style={styles.container}>
-            <SignupContainer />
+            <EnterRoomContainer />
           </View>
         </MuiThemeProvider>
       </Provider>
