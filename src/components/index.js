@@ -1,3 +1,3 @@
 export * from './hello-world';
 export * from './goodbye-world';
-export * from './signup-form';
+export * from './enter-room-form';
