@@ -11,6 +11,8 @@ const EnterRoom = ({ create, join , handleSubmit, pristine, submitting, invalid 
         <View>
             <Text>User ID:</Text>
             <Field name='userId' component={renderInput}/>
+            <Text>Room ID:</Text>
+            <Field name='roomId' component={renderInput}/>
             <TouchableOpacity onPress={handleSubmit(create)}
                               disabled={pristine || submitting || invalid} >
                 <Text>Create Room</Text>
