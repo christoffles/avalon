@@ -11,12 +11,10 @@ export function enterRoomReducer(state = initialEnterRoomState, action) {
         case EnterRoomActions.CREATE_ROOM_SUCCESS:
             return {
                 ...state,
-                ...action.payload,
             };
         case EnterRoomActions.CREATE_ROOM_FAILURE:
             return {
                 ...state,
-                ...action.payload,
             };
         case EnterRoomActions.JOIN_ROOM:
             return {
@@ -25,12 +23,10 @@ export function enterRoomReducer(state = initialEnterRoomState, action) {
         case EnterRoomActions.JOIN_ROOM_SUCCESS:
             return {
                 ...state,
-                ...action.payload,
             };
         case EnterRoomActions.JOIN_ROOM_FAILURE:
             return {
                 ...state,
-                ...action.payload,
             };
         default:
             return {
