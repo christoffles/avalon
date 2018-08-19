@@ -1,11 +1,23 @@
 import { database } from '../config'
 import { EnterRoomActions } from "../../containers/enter-room/enter-room.actions";
 
-const updateGameState = snapshot => {}; // todo in card 23
+const updateGameState = snapshot => {console.log('db state updated', snapshot)}; // todo in card 23
+
+const attachListeners = (roomId) => {
+    // game start - go to next screen
+    database.ref('games/' + roomId + '/status').on('value', (snapshot) => {
+        updateGameState(snapshot);
+    });
+
+    // update list of people in room
+    database.ref('games/' + roomId + '/participants').on('value', (snapshot) => {
+        updateGameState(snapshot);
+    });
+};
 
 // caller sets redux state as 'in pre-game' - afterwards, updateState will update
 export const createRoom = (roomId, userId) => {
-    console.log('creating a room!');
+    console.log('try creating a room');
     database.ref('games/' + roomId).once('value', snapshot => {
         console.log('checking for existing room', snapshot);
         if (snapshot.exists()) {
@@ -22,11 +34,7 @@ export const createRoom = (roomId, userId) => {
                 participants: [ userId ]
             });
 
-            // attach a listener
-            // keep redux state consistent with realtime db
-            database.ref('games/' + roomId).on('value', (snapshot) => {
-                updateGameState(snapshot);
-            });
+            attachListeners(roomId);
 
             return {
                 type: EnterRoomActions.CREATE_ROOM_SUCCESS,
@@ -41,7 +49,7 @@ export const createRoom = (roomId, userId) => {
 };
 
 export const joinRoom = (roomId, userId) => {
-    console.log('joining a room');
+    console.log('try joining a room');
     database.ref('games/' + roomId).once('value', snapshot => {
         if (snapshot.exists() && snapshot.val().status === 'open' && !snapshot.val().participants.includes(userId)) {
             console.log('room found');
@@ -52,15 +60,14 @@ export const joinRoom = (roomId, userId) => {
 
             database.ref('games/' + roomId).update(newState);
 
-            database.ref('games' + roomId).on('value', snapshot => {
-                updateGameState(snapshot.val());
-            });
+            attachListeners(roomId);
 
             return {
                 type: EnterRoomActions.JOIN_ROOM_SUCCESS,
                 roomId: roomId,
             }
         } else {
+            console.log('could not join room');
             return {
                 type: EnterRoomActions.JOIN_ROOM_FAILURE,
             }
