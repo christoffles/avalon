@@ -4,8 +4,10 @@ import { Provider } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import { store } from './src/store'
-import { HomeContainer } from "./src/containers/home";
-import { EnterRoomContainer } from "./src/containers/enter-room";
+import { HomeContainer } from './src/containers/home';
+import { EnterRoomContainer } from './src/containers/enter-room';
+import { SwitchNavigator } from './src/navigation/navigator';
+import NavigatorService from './src/navigation/navigation';
 
 global.navigator = { userAgent: 'all' };
 
@@ -16,7 +18,9 @@ export default class App extends Component {
       <Provider store={store}>
         <MuiThemeProvider>
           <View style={styles.container}>
-            <EnterRoomContainer />
+            <SwitchNavigator ref={navigatorRef => {
+              NavigatorService.setContainer(navigatorRef);
+            }}/>
           </View>
         </MuiThemeProvider>
       </Provider>
@@ -31,4 +35,3 @@ const styles = StyleSheet.create({
     marginTop: 50
   }
 });
-
