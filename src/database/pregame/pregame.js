@@ -1,5 +1,6 @@
 import { database } from '../config'
-import { EnterRoomActions } from "../../containers/enter-room/enter-room.actions";
+import { EnterRoomActions } from '../../containers/enter-room/enter-room.actions';
+import NavigatorService from '../../navigation/navigation';
 
 const updateGameState = snapshot => {console.log('db state updated', snapshot)}; // todo in card 23
 
@@ -35,6 +36,7 @@ export const createRoom = (roomId, userId) => {
             });
 
             attachListeners(roomId);
+            NavigatorService.navigate('HelloWorld'); // TODO change this to actual next screen
 
             return {
                 type: EnterRoomActions.CREATE_ROOM_SUCCESS,
@@ -61,6 +63,7 @@ export const joinRoom = (roomId, userId) => {
             database.ref('games/' + roomId).update(newState);
 
             attachListeners(roomId);
+            NavigatorService.navigate('HelloWorld'); // TODO change this to actual next screen
 
             return {
                 type: EnterRoomActions.JOIN_ROOM_SUCCESS,

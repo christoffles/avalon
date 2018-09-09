@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 
-import { EnterRoomActions } from "./enter-room.actions";
-import { createRoom, joinRoom } from "../../database/pregame";
+import { EnterRoomActions } from './enter-room.actions';
+import { createRoom, joinRoom } from '../../database/pregame';
 
 
 export const createRoomEpic = (action$, store) =>

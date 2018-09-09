@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { EnterRoomForm } from "../../components";
-import { createRoomAction, joinRoomAction } from "./enter-room.actions";
+import { EnterRoomForm } from '../../components';
+import { createRoomAction, joinRoomAction } from './enter-room.actions';
 
 
 const EnterRoom = ({ create, join }) => {

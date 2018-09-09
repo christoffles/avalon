@@ -6,7 +6,7 @@ const renderInput = ({ input: { onChange, ...restInput }}) => {
     return <TextInput onChangeText={onChange} {...restInput} />
 };
 
-const EnterRoom = ({ create, join , handleSubmit, pristine, submitting, invalid }) => {
+const EnterRoom = ({ create, join, handleSubmit, pristine, submitting, invalid }) => {
     return (
         <View>
             <Text>User ID:</Text>
